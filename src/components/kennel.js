@@ -17,4 +17,4 @@ class Kennel extends Component {
     }
 }
 
-export default Kennel
+export default Kennel 
