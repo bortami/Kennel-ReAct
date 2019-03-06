@@ -4,6 +4,8 @@ import AnimalList from './animals/AnimalList';
 import LocationList from './locations/LocationsList';
 import EmployeeList from './employee/EmployeeList';
 import OwnersList from './owners/OwnersList';
+import SearchResults from './SearchResults/searchResults';
+import apiManager from '../modules/apiManager';
 
 class ApplicationViews extends Component {
 	state = {
@@ -16,32 +18,22 @@ class ApplicationViews extends Component {
 
 	componentDidMount() {
 		const newState = {};
-		fetch('http://localhost:5002/employees')
-			.then((employees) => employees.json())
-			.then((parsedEmployees) => {
-				newState.employees = parsedEmployees;
-				return fetch('http://localhost:5002/locations');
-			})
-			.then((locations) => locations.json())
-			.then((parsedLocations) => {
+		apiManager.allEmployees().then((parsedEmployees) => {
+			newState.employees = parsedEmployees;
+			apiManager.allLocations().then((parsedLocations) => {
 				newState.locations = parsedLocations;
-				return fetch('http://localhost:5002/owners');
-			})
-			.then((owners) => owners.json())
-			.then((parsedOwners) => {
-				newState.owners = parsedOwners;
-				return fetch('http://localhost:5002/animals');
-			})
-			.then((animals) => animals.json())
-			.then((parsedAnimals) => {
-				newState.animals = parsedAnimals;
-				return fetch('http://localhost:5002/animalsOwners');
-			})
-			.then((animalOwners) => animalOwners.json())
-			.then((parsedAnimalOwners) => {
-				newState.animalOwners = parsedAnimalOwners;
-				this.setState(newState);
+				apiManager.allOwners().then((parsedOwners) => {
+					newState.owners = parsedOwners;
+					apiManager.allAnimals().then((parsedAnimals) => {
+						newState.animals = parsedAnimals;
+						apiManager.allAnimalOwners().then((parsedAnimalOwners) => {
+							newState.animalOwners = parsedAnimalOwners;
+							this.setState(newState);
+						});
+					});
+				});
 			});
+		});
 	}
 
 	render() {
@@ -76,6 +68,12 @@ class ApplicationViews extends Component {
 					path="/owners"
 					render={(props) => {
 						return <OwnersList owners={this.state.owners} />;
+					}}
+				/>
+				<Route
+					path="/search"
+					render={(props) => {
+						return <SearchResults />;
 					}}
 				/>
 			</div>
