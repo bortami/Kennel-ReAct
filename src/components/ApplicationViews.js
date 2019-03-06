@@ -10,8 +10,10 @@ class ApplicationViews extends Component {
 		employees: [],
 		locations: [],
 		animals: [],
-		owners: []
+		owners: [],
+		animalOwners: []
 	};
+
 	componentDidMount() {
 		const newState = {};
 		fetch('http://localhost:5002/employees')
@@ -25,16 +27,21 @@ class ApplicationViews extends Component {
 				newState.locations = parsedLocations;
 				return fetch('http://localhost:5002/owners');
 			})
-			.then((r) => r.json())
+			.then((owners) => owners.json())
 			.then((parsedOwners) => {
 				newState.owners = parsedOwners;
 				return fetch('http://localhost:5002/animals');
 			})
-			.then((r) => r.json())
+			.then((animals) => animals.json())
 			.then((parsedAnimals) => {
 				newState.animals = parsedAnimals;
+				return fetch('http://localhost:5002/animalsOwners');
 			})
-			.then(() => this.setState(newState));
+			.then((animalOwners) => animalOwners.json())
+			.then((parsedAnimalOwners) => {
+				newState.animalOwners = parsedAnimalOwners;
+				this.setState(newState);
+			});
 	}
 
 	render() {
@@ -50,7 +57,13 @@ class ApplicationViews extends Component {
 				<Route
 					path="/animals"
 					render={(props) => {
-						return <AnimalList animals={this.state.animals} owners={this.state.owners} />;
+						return (
+							<AnimalList
+								animals={this.state.animals}
+								owners={this.state.owners}
+								animalOwners={this.state.animalOwners}
+							/>
+						);
 					}}
 				/>
 				<Route
