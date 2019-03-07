@@ -6,11 +6,6 @@ Note: Before you attempt these challenges, please create a seperate branch in yo
 1. When a user selects "dogs" from the dropdown for example, they should only see a list of dogs. When they select "birds", they should see all the birds, etc. 
 
 
-
-## 4. Animals and Owners Lite
-1. If the original challenge of assigning animals to owners felt scary, try it again- but this time let's assume that each animal can only have one owner. An owner can still have many animals. (In this scenario, you have a one to many relationship and you don't need the join table.)
-1. In the animalList component, display each animal's owner's name underneath the animal's name. (Hint: this is very similar to challenge #1)
-
 ## 5. Archive Owners instead of deleting them
 The kennel has decided that they don't want to delete owners forever- they would like to "archive" them instead, but still keep a record of them in the database in case that owner returns to the kennel. (For example, if they move away and then come back.)
 1. In your `kennel.json` database, add a property on each owner entry called `isActive`. This property will hold a boolean that represents whether they are an active customer or not. The boolean should start out as `true`.
