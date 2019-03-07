@@ -1,11 +1,5 @@
 Note: Before you attempt these challenges, please create a seperate branch in your application. We'll be going slightly off script from the normal course of the chapters, and I'd like you to be able to switch back to master and keep working with the stuff in the chapters without bugs.
 
-# Kennel Challenges 
-## 1. Kennel - Animals and Species
-1. Add a new table to your `kennel.json` database to represent species (i.e. "cat", "dog", "bird", "reptile")
-1. Give each animal entry in your animals collection a foreign key of `speciesId` that corresponds to an entry in the species table
-1. In your animalList component, display each animal's species under their name in the card. (Hint: this is very similar to displaying candy types with candies, except now that you're storing data in your json-server database you can use `_expand` to do some of the heavy-lifting for you)
-
 #### Bonus:
 1. Look online for icon images to represent each species. In your AnimalList component, render the appropriate icon image for each animal.
 
