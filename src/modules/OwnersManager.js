@@ -6,10 +6,14 @@ const OwnerManager = {
 	singleOwner: (id) => {
 		return fetch(`${remoteURL}/owners/${id}`).then((e) => e.json());
 	},
-	deleteOwner: (id) => {
-		return fetch(`http://localhost:5002/owners/${id}`, {
+	deleteAndListOwner: (id) => {
+		return fetch(`${remoteURL}/owners/${id}`, {
 			method: 'DELETE'
-		}).then((e) => e.json());
+		})
+			.then((e) => e.json())
+			.then(() => {
+				return fetch(`${remoteURL}/owners`).then((e) => e.json());
+			});
 	}
 };
 

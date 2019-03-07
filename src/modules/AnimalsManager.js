@@ -6,11 +6,15 @@ const AnimalManager = {
 	singleAnimal: (id) => {
 		return fetch(`${remoteURL}/animals/${id}`).then((e) => e.json());
 	},
-	deleteSingleAnimal: (id) => {
-		return fetch(`http://localhost:5002/animals/${id}`, {
+	deleteAndListAnimal: (id) => {
+		return fetch(`${remoteURL}/animals/${id}`, {
 			method: 'DELETE'
-		}).then((e) => e.json());
+		})
+			.then((e) => e.json())
+			.then(() => {
+				return fetch(`${remoteURL}/animals`).then((e) => e.json());
+			});
 	}
 };
 
-export default AnimalManager
+export default AnimalManager;
