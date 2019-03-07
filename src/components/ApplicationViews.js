@@ -5,7 +5,11 @@ import LocationList from './locations/LocationsList';
 import EmployeeList from './employee/EmployeeList';
 import OwnersList from './owners/OwnersList';
 import SearchResults from './SearchResults/searchResults';
-import apiManager from '../modules/apiManager';
+import EmployeeManager from '../modules/EmployeesManager';
+import LocationManager from '../modules/LocationsManager';
+import AnimalManager from '../modules/AnimalsManager';
+import OwnerManager from '../modules/OwnersManager';
+import AnimalOwnerManager from '../modules/AnimalOwnersManager';
 
 class ApplicationViews extends Component {
 	state = {
@@ -16,64 +20,44 @@ class ApplicationViews extends Component {
 		animalOwners: []
 	};
 	deleteAnimal = (id) => {
-		return fetch(`http://localhost:5002/animals/${id}`, {
-			method: 'DELETE'
-		})
-			.then((e) => e.json())
-			.then(() => fetch(`http://localhost:5002/animals`))
-			.then((e) => e.json())
-			.then((animals) =>
+		AnimalManager.deleteSingleAnimal(id).then(() =>
+			AnimalManager.allAnimals().then((animals) =>
 				this.setState({
 					animals: animals
 				})
-			);
+			)
+		);
 	};
 	deleteOwner = (id) => {
-		return fetch(`http://localhost:5002/owners/${id}`, {
-			method: 'DELETE'
-		})
-			.then((e) => e.json())
-			.then(() => fetch(`http://localhost:5002/owners`))
-			.then((e) => e.json())
-			.then((owners) =>
+		OwnerManager.deleteOwner(id).then(() =>
+			OwnerManager.allOwners().then((owners) =>
 				this.setState({
 					owners: owners
 				})
-			);
+			)
+		);
 	};
 	fireEmployee = (id) => {
-		return fetch(`http//localhost:5002/employees/${id}`, {
-			method: 'DELETE'
-		})
-			.then((e) => e.json())
-			.then(() => {
-				fetch(`http://localhost:5002/employees`)
-					.then((e) => e.json())
-					.then((employees) => this.setState({ employees: employees }));
-			});
+		EmployeeManager.deleteEmployee(id).then(() => {
+			EmployeeManager.allEmployees().then((employees) => this.setState({ employees: employees }));
+		});
 	};
 	deleteLocation = (id) => {
-		return fetch(`http//localhost:5002/locations/${id}`, {
-			method: 'DELETE'
-		})
-			.then((e) => e.json())
-			.then(() => {
-				fetch(`http://localhost:5002/locations`)
-					.then((e) => e.json())
-					.then((locations) => this.setState({ locations: locations }));
-			});
+		LocationManager.deleteLocation(id).then(() => {
+			LocationManager.allLocations().then((locations) => this.setState({ locations: locations }));
+		});
 	};
 	componentDidMount() {
 		const newState = {};
-		apiManager.allEmployees().then((parsedEmployees) => {
+		EmployeeManager.allEmployees().then((parsedEmployees) => {
 			newState.employees = parsedEmployees;
-			apiManager.allLocations().then((parsedLocations) => {
+			LocationManager.allLocations().then((parsedLocations) => {
 				newState.locations = parsedLocations;
-				apiManager.allOwners().then((parsedOwners) => {
+				OwnerManager.allOwners().then((parsedOwners) => {
 					newState.owners = parsedOwners;
-					apiManager.allAnimals().then((parsedAnimals) => {
+					AnimalManager.allAnimals().then((parsedAnimals) => {
 						newState.animals = parsedAnimals;
-						apiManager.allAnimalOwners().then((parsedAnimalOwners) => {
+						AnimalOwnerManager.allAnimalOwners().then((parsedAnimalOwners) => {
 							newState.animalOwners = parsedAnimalOwners;
 							this.setState(newState);
 						});
