@@ -5,11 +5,7 @@ import LocationList from './locations/LocationsList';
 import EmployeeList from './employee/EmployeeList';
 import OwnersList from './owners/OwnersList';
 import SearchResults from './SearchResults/searchResults';
-import EmployeeManager from '../modules/EmployeesManager';
-import LocationManager from '../modules/LocationsManager';
-import AnimalManager from '../modules/AnimalsManager';
-import OwnerManager from '../modules/OwnersManager';
-import AnimalOwnerManager from '../modules/AnimalOwnersManager';
+import api from '../modules/APIManager';
 
 class ApplicationViews extends Component {
 	state = {
@@ -20,40 +16,37 @@ class ApplicationViews extends Component {
 		animalOwners: []
 	};
 	deleteAnimal = (id) => {
-		AnimalManager.deleteAndListAnimal(id).then((animals) =>
+		api.deleteAndList('animals', id).then((animals) =>
 			this.setState({
 				animals: animals
 			})
 		);
 	};
 	deleteOwner = (id) => {
-		OwnerManager.deleteAndListOwner(id).then((owners) =>
+		api.deleteAndList('owners', id).then((owners) =>
 			this.setState({
 				owners: owners
 			})
 		);
 	};
 	fireEmployee = (id) => {
-		EmployeeManager.deleteEmployee(id).then(() => {
-			EmployeeManager.allEmployees().then((employees) => this.setState({ employees: employees }));
-		});
+		api.deleteAndList('employees', id).then((employees) => this.setState({ employees: employees }));
 	};
+
 	deleteLocation = (id) => {
-		LocationManager.deleteLocation(id).then(() => {
-			LocationManager.allLocations().then((locations) => this.setState({ locations: locations }));
-		});
+		api.deleteAndList('locations', id).then((locations) => this.setState({ locations: locations }));
 	};
 	componentDidMount() {
 		const newState = {};
-		EmployeeManager.allEmployees().then((parsedEmployees) => {
+		api.all('employees').then((parsedEmployees) => {
 			newState.employees = parsedEmployees;
-			LocationManager.allLocations().then((parsedLocations) => {
+			api.all('locations').then((parsedLocations) => {
 				newState.locations = parsedLocations;
-				OwnerManager.allOwners().then((parsedOwners) => {
+				api.all('owners').then((parsedOwners) => {
 					newState.owners = parsedOwners;
-					AnimalManager.allAnimals().then((parsedAnimals) => {
+					api.all('animals').then((parsedAnimals) => {
 						newState.animals = parsedAnimals;
-						AnimalOwnerManager.allAnimalOwners().then((parsedAnimalOwners) => {
+						api.all('animalOwners').then((parsedAnimalOwners) => {
 							newState.animalOwners = parsedAnimalOwners;
 							this.setState(newState);
 						});
