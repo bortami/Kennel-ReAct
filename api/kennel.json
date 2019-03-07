@@ -70,37 +70,44 @@
 		{
 			"id": 1,
 			"name": "Ryan",
-			"phoneNumber": "304-751-0000"
+			"phoneNumber": "304-751-0000",
+      "goldMember": true
 		},
 		{
 			"id": 2,
 			"name": "Dale",
-			"phoneNumber": "304-751-0000"
+			"phoneNumber": "304-751-0000",
+      "goldMember": true
 		},
 		{
 			"id": 3,
 			"name": "Russ",
-			"phoneNumber": "304-751-0000"
+			"phoneNumber": "304-751-0000",
+      "goldMember": false
 		},
 		{
 			"id": 4,
 			"name": "Sydney",
-			"phoneNumber": "304-751-0000"
+			"phoneNumber": "304-751-0000",
+      "goldMember": false
 		},
 		{
 			"id": 5,
 			"name": "Megan",
-			"phoneNumber": "304-751-0000"
+			"phoneNumber": "304-751-0000",
+      "goldMember": false
 		},
 		{
 			"id": 6,
 			"name": "Michelle",
-			"phoneNumber": "304-751-0000"
+			"phoneNumber": "304-751-0000",
+      "goldMember": true
 		},
 		{
 			"id": 7,
 			"name": "Josh",
-			"phoneNumber": "304-751-0000"
+			"phoneNumber": "304-751-0000",
+      "goldMember": true
 		}
 	],
 

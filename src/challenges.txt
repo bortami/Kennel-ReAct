@@ -1,16 +1,11 @@
 Note: Before you attempt these challenges, please create a seperate branch in your application. We'll be going slightly off script from the normal course of the chapters, and I'd like you to be able to switch back to master and keep working with the stuff in the chapters without bugs.
 
-#### Bonus:
-1. Look online for icon images to represent each species. In your AnimalList component, render the appropriate icon image for each animal.
 
 ## 2. Kennel - Filter Animals by species
 1. Add a dropdown menu to the top of your animal list component. The dropdown should be dynamically populated with the species in your database.  
 1. When a user selects "dogs" from the dropdown for example, they should only see a list of dogs. When they select "birds", they should see all the birds, etc. 
 
-## 3. Gold Membership 
-1. The kennel is introducing a new feature were certain clients can purchase a gold membership and get unlimited access to the kennel facilities. They need a way of keeping track of which clients have purchased a gold membership.
-1. Add a property on each entry in the `owners` table called `goldMembership`. The property should be set to true or false. (Make sure you have some of both in your seed data.) 
-1. In your owner list component, gold members should have a gold background. Non-gold members should have a plain white background.
+
 
 ## 4. Animals and Owners Lite
 1. If the original challenge of assigning animals to owners felt scary, try it again- but this time let's assume that each animal can only have one owner. An owner can still have many animals. (In this scenario, you have a one to many relationship and you don't need the join table.)
