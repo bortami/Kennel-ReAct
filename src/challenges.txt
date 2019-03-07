@@ -1,0 +1,40 @@
+Note: Before you attempt these challenges, please create a seperate branch in your application. We'll be going slightly off script from the normal course of the chapters, and I'd like you to be able to switch back to master and keep working with the stuff in the chapters without bugs.
+
+# Kennel Challenges 
+## 1. Kennel - Animals and Species
+1. Add a new table to your `kennel.json` database to represent species (i.e. "cat", "dog", "bird", "reptile")
+1. Give each animal entry in your animals collection a foreign key of `speciesId` that corresponds to an entry in the species table
+1. In your animalList component, display each animal's species under their name in the card. (Hint: this is very similar to displaying candy types with candies, except now that you're storing data in your json-server database you can use `_expand` to do some of the heavy-lifting for you)
+
+#### Bonus:
+1. Look online for icon images to represent each species. In your AnimalList component, render the appropriate icon image for each animal.
+
+## 2. Kennel - Filter Animals by species
+1. Add a dropdown menu to the top of your animal list component. The dropdown should be dynamically populated with the species in your database.  
+1. When a user selects "dogs" from the dropdown for example, they should only see a list of dogs. When they select "birds", they should see all the birds, etc. 
+
+## 3. Gold Membership 
+1. The kennel is introducing a new feature were certain clients can purchase a gold membership and get unlimited access to the kennel facilities. They need a way of keeping track of which clients have purchased a gold membership.
+1. Add a property on each entry in the `owners` table called `goldMembership`. The property should be set to true or false. (Make sure you have some of both in your seed data.) 
+1. In your owner list component, gold members should have a gold background. Non-gold members should have a plain white background.
+
+## 4. Animals and Owners Lite
+1. If the original challenge of assigning animals to owners felt scary, try it again- but this time let's assume that each animal can only have one owner. An owner can still have many animals. (In this scenario, you have a one to many relationship and you don't need the join table.)
+1. In the animalList component, display each animal's owner's name underneath the animal's name. (Hint: this is very similar to challenge #1)
+
+## 5. Archive Owners instead of deleting them
+The kennel has decided that they don't want to delete owners forever- they would like to "archive" them instead, but still keep a record of them in the database in case that owner returns to the kennel. (For example, if they move away and then come back.)
+1. In your `kennel.json` database, add a property on each owner entry called `isActive`. This property will hold a boolean that represents whether they are an active customer or not. The boolean should start out as `true`.
+1. Refactor your function that deletes owners. Instead of making a `DELETE` request, it should make a `PATCH` request to change the `isActive` property to false.
+1. When the user first loads the OwnerList component, they should only see active owners.
+1. Users should see a dropdown at the top of the OwnerList component. The dropdown should have three options: "view active owners", "view all owners", and "view archived owners". 
+1. When the user selects "view active owners", they should only see owners whose `isActive` property is set to `true`
+1. When the user selects "view archived owners", they should only see owners whose `isActive` property is set to `false`
+1. When the user selects "view all owners", they should see all the owners. Archived owners should have a gray background and red text under their name with text that says "Archived"
+1. Archived owners, instead of a delete button, should have a green button that says "Reinstate". 
+1. The "Reinstate" button, when clicked, should send another `PATCH` request to the database that changes the `isActive` property from `false` to `true`.
+
+## 6. Archive animals when their owners are archived
+1. When the user first views the list of animals in your Kennel application, they should only see animals whose owners are active customers. 
+1. Users should see a dropdown at the top of the animal list with three options: "view all animals", "view archived animals", and "view active animals". The dropdown should behave exactly like the dropdown in the the previous challenge, with the same styling applied to differentiate active animals from archived animals.
+

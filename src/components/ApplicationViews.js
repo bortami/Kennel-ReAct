@@ -6,6 +6,7 @@ import EmployeeList from './employee/EmployeeList';
 import OwnersList from './owners/OwnersList';
 import SearchResults from './SearchResults/searchResults';
 import api from '../modules/APIManager';
+import aniapi from "../modules/AnimalsManager"
 
 class ApplicationViews extends Component {
 	state = {
@@ -44,7 +45,7 @@ class ApplicationViews extends Component {
 				newState.locations = parsedLocations;
 				api.all('owners').then((parsedOwners) => {
 					newState.owners = parsedOwners;
-					api.all('animals').then((parsedAnimals) => {
+					aniapi.species('animals').then((parsedAnimals) => {
 						newState.animals = parsedAnimals;
 						api.all('animalOwners').then((parsedAnimalOwners) => {
 							newState.animalOwners = parsedAnimalOwners;

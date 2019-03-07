@@ -1,118 +1,151 @@
 {
-  "employees": [
-    {
-      "id": 1,
-      "name": "Jessica Younker"
-    },
-    {
-      "id": 2,
-      "name": "Jordan Nelson"
-    },
-    {
-      "id": 3,
-      "name": "Zoe LeBlanc"
-    },
-    {
-      "id": 4,
-      "name": "Blaise Roberts"
-    }
-  ],
-  "animals": [
-    {
-      "id": 2,
-      "name": "Jack"
-    },
-    {
-      "id": 3,
-      "name": "Angus"
-    },
-    {
-      "id": 4,
-      "name": "Henley"
-    },
-    {
-      "id": 5,
-      "name": "Derkins"
-    },
-    {
-      "id": 6,
-      "name": "Checkers"
-    }
-  ],
-  "owners": [
-    {
-      "id": 1,
-      "name": "Ryan",
-      "phoneNumber": "304-751-0000"
-    },
-    {
-      "id": 2,
-      "name": "Dale",
-      "phoneNumber": "304-751-0000"
-    },
-    {
-      "id": 3,
-      "name": "Russ",
-      "phoneNumber": "304-751-0000"
-    },
-    {
-      "id": 4,
-      "name": "Sydney",
-      "phoneNumber": "304-751-0000"
-    },
-    {
-      "id": 5,
-      "name": "Megan",
-      "phoneNumber": "304-751-0000"
-    },
-    {
-      "id": 6,
-      "name": "Michelle",
-      "phoneNumber": "304-751-0000"
-    },
-    {
-      "id": 7,
-      "name": "Josh",
-      "phoneNumber": "304-751-0000"
-    }
-  ],
-  "animalsOwners": [
-    {
-      "id": 2,
-      "ownerId": 1,
-      "animalId": 2
-    },
-    {
-      "id": 4,
-      "ownerId": 2,
-      "animalId": 3
-    },
-    {
-      "id": 5,
-      "ownerId": 3,
-      "animalId": 4
-    },
-    {
-      "id": 6,
-      "ownerId": 5,
-      "animalId": 5
-    },
-    {
-      "id": 7,
-      "ownerId": 4,
-      "animalId": 6
-    }
-  ],
-  "locations": [
-    {
-      "id": 1,
-      "name": "Nashville North",
-      "address": "500 Circle Way"
-    },
-    {
-      "id": 2,
-      "name": "Nashville South",
-      "address": "10101 Binary Court"
-    }
-  ]
+	"employees": [
+		{
+			"id": 1,
+			"name": "Jessica Younker"
+		},
+		{
+			"id": 2,
+			"name": "Jordan Nelson"
+		},
+		{
+			"id": 3,
+			"name": "Zoe LeBlanc"
+		},
+		{
+			"id": 4,
+			"name": "Blaise Roberts"
+		}
+	],
+	"types": [
+		{
+			"id": 1,
+			"kind": "dog"
+		},
+		{
+			"id": 2,
+			"kind": "cat"
+		},
+		{
+			"id": 3,
+			"kind": "bird"
+		},
+		{
+			"id": 4,
+			"kind": "retile"
+		},
+		{
+			"id": 5,
+			"kind": "rodent"
+		}
+	],
+	"animals": [
+		{
+			"id": 2,
+			"name": "Jack",
+			"typeId": 1
+		},
+		{
+			"id": 3,
+			"name": "Angus",
+			"typeId": 2
+		},
+		{
+			"id": 4,
+			"name": "Henley",
+			"typeId": 3
+		},
+		{
+			"id": 5,
+			"name": "Derkins",
+			"typeId": 4
+		},
+		{
+			"id": 1,
+			"name": "Checkers",
+			"typeId": 5
+		}
+	],
+	"owners": [
+		{
+			"id": 1,
+			"name": "Ryan",
+			"phoneNumber": "304-751-0000"
+		},
+		{
+			"id": 2,
+			"name": "Dale",
+			"phoneNumber": "304-751-0000"
+		},
+		{
+			"id": 3,
+			"name": "Russ",
+			"phoneNumber": "304-751-0000"
+		},
+		{
+			"id": 4,
+			"name": "Sydney",
+			"phoneNumber": "304-751-0000"
+		},
+		{
+			"id": 5,
+			"name": "Megan",
+			"phoneNumber": "304-751-0000"
+		},
+		{
+			"id": 6,
+			"name": "Michelle",
+			"phoneNumber": "304-751-0000"
+		},
+		{
+			"id": 7,
+			"name": "Josh",
+			"phoneNumber": "304-751-0000"
+		}
+	],
+
+	"animalOwners": [
+		{
+			"id": 2,
+			"ownerId": 1,
+			"animalId": 2
+		},
+		{
+			"id": 4,
+			"ownerId": 2,
+			"animalId": 3
+		},
+		{
+			"id": 5,
+			"ownerId": 3,
+			"animalId": 4
+		},
+		{
+			"id": 6,
+			"ownerId": 5,
+			"animalId": 5
+		},
+		{
+			"id": 7,
+			"ownerId": 4,
+			"animalId": 6
+		},
+		{
+			"id": 1,
+			"ownerId": 2,
+			"animalId": 4
+		}
+	],
+	"locations": [
+		{
+			"id": 1,
+			"name": "Nashville North",
+			"address": "500 Circle Way"
+		},
+		{
+			"id": 2,
+			"name": "Nashville South",
+			"address": "10101 Binary Court"
+		}
+	]
 }
