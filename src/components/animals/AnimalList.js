@@ -1,40 +1,27 @@
 import React, { Component } from 'react';
-class AnimalList extends Component {
-	animalsWithOwners = this.props.animals.map((singleAnimal) => {
-		const matchingAnimalOwnerEntries = this.props.animalOwners.filter((singleAnimalOwnerEntry) => {
-			return singleAnimalOwnerEntry.animalId === singleAnimal.id;
-		});
+import dog from './DogIcon.png';
+import './Animal.css';
 
-		const matchingOwnerObjects = matchingAnimalOwnerEntries.map((joinTableEntry) => {
-			const matchingOwner = this.props.owners.find((singleOwner) => {
-				return singleOwner.id === joinTableEntry.ownerId;
-			});
-			return matchingOwner;
-		});
-
-		return {
-			id: singleAnimal.id,
-			name: singleAnimal.name,
-			owners: matchingOwnerObjects
-		};
-	});
-
+export default class AnimalList extends Component {
+	
+	
 	render() {
 		return (
-			<article>
-				<h1>Animals</h1>
-				{this.animalsWithOwners.map((animal) => {
-					return (
-						<div key={animal.id}>
-							<h3>{animal.name}</h3>
-							<h4>Owners:</h4>
-							{animal.owners.map((singleOwner) => <p key={singleOwner.id}>{singleOwner.name}</p>)}
+			<section className="animals">
+				{this.props.animals.map((animal) => (
+					<div key={animal.id} className="card">
+						<div className="card-body">
+							<h5 className="card-title">
+								<img src={dog} className="icon--dog" alt="cute dog icon" />
+								{animal.name}
+								<a href="#" onClick={() => this.props.deleteAnimal(animal.id)} className="card-link">
+									Delete
+								</a>
+							</h5>
 						</div>
-					);
-				})}
-			</article>
+					</div>
+				))}
+			</section>
 		);
 	}
 }
-
-export default AnimalList;

@@ -15,7 +15,54 @@ class ApplicationViews extends Component {
 		owners: [],
 		animalOwners: []
 	};
-
+	deleteAnimal = (id) => {
+		return fetch(`http://localhost:5002/animals/${id}`, {
+			method: 'DELETE'
+		})
+			.then((e) => e.json())
+			.then(() => fetch(`http://localhost:5002/animals`))
+			.then((e) => e.json())
+			.then((animals) =>
+				this.setState({
+					animals: animals
+				})
+			);
+	};
+	deleteOwner = (id) => {
+		return fetch(`http://localhost:5002/owners/${id}`, {
+			method: 'DELETE'
+		})
+			.then((e) => e.json())
+			.then(() => fetch(`http://localhost:5002/owners`))
+			.then((e) => e.json())
+			.then((owners) =>
+				this.setState({
+					owners: owners
+				})
+			);
+	};
+	fireEmployee = (id) => {
+		return fetch(`http//localhost:5002/employees/${id}`, {
+			method: 'DELETE'
+		})
+			.then((e) => e.json())
+			.then(() => {
+				fetch(`http://localhost:5002/employees`)
+					.then((e) => e.json())
+					.then((employees) => this.setState({ employees: employees }));
+			});
+	};
+	deleteLocation = (id) => {
+		return fetch(`http//localhost:5002/locations/${id}`, {
+			method: 'DELETE'
+		})
+			.then((e) => e.json())
+			.then(() => {
+				fetch(`http://localhost:5002/locations`)
+					.then((e) => e.json())
+					.then((locations) => this.setState({ locations: locations }));
+			});
+	};
 	componentDidMount() {
 		const newState = {};
 		apiManager.allEmployees().then((parsedEmployees) => {
@@ -43,7 +90,7 @@ class ApplicationViews extends Component {
 					exact
 					path="/"
 					render={(props) => {
-						return <LocationList locations={this.state.locations} />;
+						return <LocationList locations={this.state.locations} deleteLocation={this.deleteLocation} />;
 					}}
 				/>
 				<Route
@@ -51,6 +98,7 @@ class ApplicationViews extends Component {
 					render={(props) => {
 						return (
 							<AnimalList
+								deleteAnimal={this.deleteAnimal}
 								animals={this.state.animals}
 								owners={this.state.owners}
 								animalOwners={this.state.animalOwners}
@@ -61,13 +109,13 @@ class ApplicationViews extends Component {
 				<Route
 					path="/employees"
 					render={(props) => {
-						return <EmployeeList employees={this.state.employees} />;
+						return <EmployeeList employees={this.state.employees} fireEmployee={this.state.fireEmployee} />;
 					}}
 				/>
 				<Route
 					path="/owners"
 					render={(props) => {
-						return <OwnersList owners={this.state.owners} />;
+						return <OwnersList owners={this.state.owners} deleteOwner={this.deleteOwner} />;
 					}}
 				/>
 				<Route
