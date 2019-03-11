@@ -6,6 +6,7 @@ import EmployeeList from './employee/EmployeeList';
 import OwnersList from './owners/OwnersList';
 import SearchResults from './SearchResults/searchResults';
 import api from '../modules/APIManager';
+import AnimalDetail from "./animals/AnimalDetail"
 
 class ApplicationViews extends Component {
 	state = {
@@ -67,7 +68,7 @@ class ApplicationViews extends Component {
 					}}
 				/>
 				<Route
-					path="/animals"
+					exact path="/animals"
 					render={(props) => {
 						return (
 							<AnimalList
@@ -76,6 +77,14 @@ class ApplicationViews extends Component {
 								owners={this.state.owners}
 								animalOwners={this.state.animalOwners}
 							/>
+						);
+					}}
+				/>
+				<Route
+					path="/animals/:animalId(\d+)"
+					render={(props) => {
+						return (
+							<AnimalDetail {...props} deleteAnimal={this.deleteAnimal} animals={this.state.animals} />
 						);
 					}}
 				/>

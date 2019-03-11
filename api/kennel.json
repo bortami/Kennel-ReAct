@@ -20,23 +20,28 @@
   "animals": [
     {
       "id": 2,
-      "name": "Jack"
+      "name": "Jack",
+      "breed": "Jack Russel"
     },
     {
       "id": 3,
-      "name": "Angus"
+      "name": "Angus",
+      "breed": "Malamute"
     },
     {
       "id": 4,
-      "name": "Henley"
+      "name": "Henley",
+      "breed": "Beagle"
     },
     {
       "id": 5,
-      "name": "Derkins"
+      "name": "Derkins",
+      "breed": "Yorkie"
     },
     {
       "id": 6,
-      "name": "Checkers"
+      "name": "Checkers",
+      "breed": "Poodle"
     }
   ],
   "owners": [
