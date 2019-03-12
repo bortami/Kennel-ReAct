@@ -71,9 +71,9 @@ class ApplicationViews extends Component {
 					}}
 				/>
 				<Route
-					path="/locaions/:locationId(\d+)"
+					path="/:locationId(\d+)"
 					render={(props) => {
-						return <LocationDetail {...props} deleteLocation={this.deleteLocation} />;
+						return <LocationDetail {...props} deleteLocation={this.deleteLocation} locations={this.state.locations}/>;
 					}}
 				/>
 				<Route

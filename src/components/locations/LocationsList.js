@@ -11,7 +11,7 @@ export default class LocationList extends Component {
 						<div className="card-body">
 							<h5 className="card-title">
 								{singlelocation.name}
-								<Link className="nav-link" to={`/locations/${singlelocation.id}`}>Details</Link>
+								<Link className="nav-link" to={`/${singlelocation.id}`}>Details</Link>
 								<button
 									className="card-link"
 									onClick={() => this.props.deleteLocation(singlelocation.id)}

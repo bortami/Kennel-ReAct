@@ -17,7 +17,7 @@ export default class EmployeeList extends Component {
 									alt="fry is not sure if reAct is easy or he's a genius"
 								/>
 								{singleEmployee.name}
-								<Link className="nav-link" to={`/locations/${singleEmployee.id}`}>
+								<Link className="nav-link" to={`/employees/${singleEmployee.id}`}>
 									Details
 								</Link>
 								<button
