@@ -14,7 +14,16 @@ const api = {
 			.then(() => {
 				return fetch(`${remoteURL}/${branch}`).then((e) => e.json());
 			});
+	},
+	post(newAnimal, branch) {
+		return fetch(`${remoteURL}/${branch}`, {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json'
+			},
+			body: JSON.stringify(newAnimal)
+		}).then((data) => data.json());
 	}
 };
 
-export default api
+export default api;
