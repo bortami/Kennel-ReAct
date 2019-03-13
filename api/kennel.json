@@ -2,23 +2,66 @@
   "employees": [
     {
       "id": 1,
-      "name": "Jessica Younker"
+      "name": "Jessica Younker",
+      "username": "Jessica",
+      "email": "jess@jess.com",
+      "password": "j"
     },
     {
       "id": 2,
-      "name": "Jordan Nelson"
+      "name": "Jordan Nelson",
+      "username": "Jordan",
+      "email": "jordan@jordan.com",
+      "password": "password"
     },
     {
       "id": 3,
-      "name": "Zoe LeBlanc"
+      "name": "Zoe LeBlanc",
+      "username": "Zoe",
+      "email": "zoe@zoe.com",
+      "password": "z"
     },
     {
       "id": 4,
-      "name": "Blaise Roberts"
+      "name": "Blaise Roberts",
+      "username": "Blaise",
+      "email": "blaise@blaise.com",
+      "password": "b"
     },
     {
       "name": "Jacob Jacobson",
-      "id": 5
+      "id": 5,
+      "username": "Jacob",
+      "email": "jacob@jacob.com",
+      "password": "p"
+    },
+    {
+      "email": "michelle@michelle.com",
+      "password": "m",
+      "username": "Michelle",
+      "name": "Michelle Tabor",
+      "id": 6
+    },
+    {
+      "email": "brian@brian.com",
+      "password": "b",
+      "username": "Brian",
+      "name": "Brian Tabor",
+      "id": 7
+    },
+    {
+      "email": "amy@amy.com",
+      "password": "a",
+      "username": "Amy",
+      "name": "Amy Gallagher",
+      "id": 8
+    },
+    {
+      "email": "evie@evie.com",
+      "password": "e",
+      "username": "Evelyn",
+      "name": "Evelyn Grace",
+      "id": 9
     }
   ],
   "animals": [

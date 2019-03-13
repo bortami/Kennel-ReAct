@@ -14,6 +14,7 @@ import AnimalForm from './animals/AnimalForm';
 import EmployeeForm from './employee/EmployeeForm';
 import OwnerForm from './owners/OwnerForm';
 import Login from './authentication/Login';
+import Register from './authentication/register';
 class ApplicationViews extends Component {
 	state = {
 		employees: [],
@@ -59,6 +60,7 @@ class ApplicationViews extends Component {
 			.post(employee, 'employees')
 			.then(() => api.all('employees'))
 			.then((employees) => this.setState({ employees: employees }));
+
 	componentDidMount() {
 		const newState = {};
 		api.all('employees').then((parsedEmployees) => {
@@ -192,13 +194,13 @@ class ApplicationViews extends Component {
 						return <OwnerForm {...props} addOwner={this.addOwner} />;
 					}}
 				/>
+				<Route path="/login" component={Login} />
 				<Route
-					path="/search"
+					path="/register"
 					render={(props) => {
-						return <SearchResults />;
+						return <Register addUser={this.addEmployee} users={this.state.employees} />;
 					}}
 				/>
-				<Route path="/login" component={Login} />
 			</div>
 		);
 	}

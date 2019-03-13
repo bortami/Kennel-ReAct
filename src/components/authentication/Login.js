@@ -29,6 +29,7 @@ export default class Login extends Component {
 				password: this.state.password
 			})
 		);
+		this.props.history.push('/animals')
 	};
 
 	render() {
