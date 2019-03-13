@@ -15,6 +15,10 @@
     {
       "id": 4,
       "name": "Blaise Roberts"
+    },
+    {
+      "name": "Jacob Jacobson",
+      "id": 5
     }
   ],
   "animals": [
@@ -53,6 +57,30 @@
       "breed": "Fiest",
       "employeeId": 3,
       "id": 7
+    },
+    {
+      "name": "Reginald",
+      "breed": "Parakeet",
+      "employeeId": 4,
+      "id": 8
+    },
+    {
+      "name": "George",
+      "breed": "Pitbull",
+      "employeeId": 1,
+      "id": 9
+    },
+    {
+      "name": "Birdie",
+      "breed": "Parrot",
+      "employeeId": 2,
+      "id": 10
+    },
+    {
+      "name": "Buck",
+      "breed": "Horse",
+      "employeeId": 3,
+      "id": 11
     }
   ],
   "owners": [

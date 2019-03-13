@@ -24,7 +24,7 @@
     margin: 12px 0 0 0;
     font-size: 0.7em;
 }
-.animalButton {
+.animalButton, .ownerButton, .employeeButton {
   display: flex;
   justify-content: space-evenly;
   margin: 0 0 10px 0;
