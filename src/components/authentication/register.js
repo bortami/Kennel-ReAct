@@ -4,6 +4,7 @@ export default class Register extends Component {
 	state = {
 		email: '',
 		password: '',
+		passwordConfirm: '',
 		username: '',
 		name: ''
 	};
@@ -14,15 +15,31 @@ export default class Register extends Component {
 	};
 	handleRegister = (e) => {
 		e.preventDefault();
+		if (this.state.password !== this.state.passwordConfirm) {
+			const errorMessage = "your passwords don't match";
+			this.setState({ errorMessage: errorMessage });
+			return null;
+		}
 		const newUser = {
 			email: this.state.email,
 			password: this.state.password,
 			username: this.state.username,
 			name: this.state.name
 		};
-		this.props.addUser(newUser).then(() => 
-        this.props.history.push('/login'));
+		this.props.getUser(this.state.username).then((user) => {
+			if (user.length > 0) {
+				const errorMessage = 'That username already exists';
+				this.setState({ errorMessage: errorMessage });
+			} else {
+				this.props.addUser(newUser).then((user) => {
+					sessionStorage.setItem('userId', user.id);
+					this.props.history.push('/');
+					this.props.refreshEmployees();
+				});
+			}
+		});
 	};
+
 	render() {
 		return (
 			<React.Fragment>
@@ -69,6 +86,17 @@ export default class Register extends Component {
 							onChange={this.handleFieldChange}
 							id="password"
 							placeholder="password"
+						/>
+					</div>
+					<div className="form-group">
+						<label htmlFor="passwordConfirm">Confirm Password</label>
+						<input
+							type="password"
+							required
+							className="form-control"
+							onChange={this.handleFieldChange}
+							id="passwordConfirm"
+							placeholder="password confirm"
 						/>
 					</div>
 					<button type="submit" onClick={this.handleRegister} className="btn btn-primary">

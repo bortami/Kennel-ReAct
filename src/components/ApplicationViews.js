@@ -22,7 +22,9 @@ class ApplicationViews extends Component {
 		owners: [],
 		animalOwners: []
 	};
-	isAuthenticated = () => sessionStorage.getItem('userId') !== null;
+	isAuthenticated = () =>
+		sessionStorage.getItem('credentials') !== null || localStorage.getItem('credentials') !== null;
+
 	getSingleUserbyUsername = (variable) => api.singleByAttribute('employees', 'username', variable);
 
 	deleteAnimal = (id) => {
@@ -60,7 +62,10 @@ class ApplicationViews extends Component {
 			.post(employee, 'employees')
 			.then(() => api.all('employees'))
 			.then((employees) => this.setState({ employees: employees }));
-
+	refreshEmployees = () =>
+		api.all('employees').then((parsedEmps) => {
+			this.setState({ employees: parsedEmps });
+		});
 	componentDidMount() {
 		const newState = {};
 		api.all('employees').then((parsedEmployees) => {
@@ -203,7 +208,14 @@ class ApplicationViews extends Component {
 				<Route
 					path="/register"
 					render={(props) => {
-						return <Register {...props} addUser={this.addEmployee} users={this.state.employees} />;
+						return (
+							<Register
+								{...props}
+								addUser={this.addEmployee}
+								getUser={this.getSingleUserbyUsername}
+								refreshEmployees={this.refreshEmployees}
+							/>
+						);
 					}}
 				/>
 			</div>
