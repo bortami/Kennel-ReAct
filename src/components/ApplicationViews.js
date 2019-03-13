@@ -40,12 +40,21 @@ class ApplicationViews extends Component {
 	deleteLocation = (id) => {
 		api.deleteAndList('locations', id).then((locations) => this.setState({ locations: locations }));
 	};
-	addAnimal = (animal) =>
-		api.post(animal, 'animals').then(() => api.all('animals')).then((animals) =>
-			this.setState({
-				animals: animals
-			})
-		);
+	addAnimal = (animal) => {
+		api
+			.post(animal, 'animals')
+			.then(() => api.all('animals'))
+			.then((animals) => this.setState({ animals: animals }));
+	};
+	addOwner = (owner) => {
+		api.post(owner, 'owners').then(() => api.all('owners')).then((owners) => this.setState({ owners: owners }));
+	};
+	addEmployee = (employee) => {
+		api
+			.post(employee, 'employees')
+			.then(() => api.all('employees'))
+			.then((employees) => this.setState({ employees: employees }));
+	};
 	componentDidMount() {
 		const newState = {};
 		api.all('employees').then((parsedEmployees) => {
