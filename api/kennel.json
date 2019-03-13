@@ -62,20 +62,6 @@
       "username": "Evelyn",
       "name": "Evelyn Grace",
       "id": 9
-    },
-    {
-      "email": "",
-      "password": "",
-      "username": "",
-      "name": "",
-      "id": 10
-    },
-    {
-      "email": "kim@kim.com",
-      "password": "k",
-      "username": "Kimberly",
-      "name": "Kimberly Elkins",
-      "id": 11
     }
   ],
   "animals": [

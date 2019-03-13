@@ -4,7 +4,6 @@ import AnimalList from './animals/AnimalList';
 import LocationList from './locations/LocationsList';
 import EmployeeList from './employee/EmployeeList';
 import OwnersList from './owners/OwnersList';
-import SearchResults from './SearchResults/searchResults';
 import api from '../modules/APIManager';
 import AnimalDetail from './animals/AnimalDetail';
 import LocationDetail from './locations/LocationDetail';
@@ -145,7 +144,7 @@ class ApplicationViews extends Component {
 							return (
 								<EmployeeList
 									{...props}
-									fireEmployee={this.deleteEmployee}
+									fireEmployee={this.fireEmployee}
 									employees={this.state.employees}
 								/>
 							);

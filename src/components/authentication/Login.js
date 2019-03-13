@@ -1,20 +1,17 @@
 import React, { Component } from 'react';
-
+import { Link } from 'react-router-dom';
 export default class Login extends Component {
-	// Set initial state
 	state = {
 		username: '',
 		password: ''
 	};
 
-	// Update state whenever an input field is edited
 	handleFieldChange = (evt) => {
 		const stateToChange = {};
 		stateToChange[evt.target.id] = evt.target.value;
 		this.setState(stateToChange);
 	};
 
-	// Simplistic handler for login submit
 	handleLogin = (e) => {
 		e.preventDefault();
 		const userNameVal = this.state.username;
@@ -56,6 +53,9 @@ export default class Login extends Component {
 						Sign In
 					</button>
 				</form>
+				<Link to="/register" className="btn btn-success">
+					Register
+				</Link>
 			</div>
 		);
 	}
