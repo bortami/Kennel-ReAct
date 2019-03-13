@@ -23,7 +23,8 @@ class ApplicationViews extends Component {
 		owners: [],
 		animalOwners: []
 	};
-	isAuthenticated = () => sessionStorage.getItem('credentials') !== null;
+	isAuthenticated = () => sessionStorage.getItem('userId') !== null;
+	getSingleUserbyUsername = (variable) => api.singleByAttribute('employees', 'username', variable);
 
 	deleteAnimal = (id) => {
 		api.deleteAndList('animals', id).then((animals) =>
@@ -194,11 +195,16 @@ class ApplicationViews extends Component {
 						return <OwnerForm {...props} addOwner={this.addOwner} />;
 					}}
 				/>
-				<Route path="/login" component={Login} />
+				<Route
+					path="/login"
+					render={(props) => {
+						return <Login {...props} getUser={this.getSingleUserbyUsername} />;
+					}}
+				/>
 				<Route
 					path="/register"
 					render={(props) => {
-						return <Register addUser={this.addEmployee} users={this.state.employees} />;
+						return <Register {...props} addUser={this.addEmployee} users={this.state.employees} />;
 					}}
 				/>
 			</div>

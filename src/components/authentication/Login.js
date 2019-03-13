@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 export default class Login extends Component {
 	// Set initial state
 	state = {
-		email: '',
+		username: '',
 		password: ''
 	};
 
@@ -17,19 +17,17 @@ export default class Login extends Component {
 	// Simplistic handler for login submit
 	handleLogin = (e) => {
 		e.preventDefault();
-
-		/*
-            For now, just store the email and password that
-            the customer enters into local storage.
-        */
-		sessionStorage.setItem(
-			'credentials',
-			JSON.stringify({
-				email: this.state.email,
-				password: this.state.password
-			})
-		);
-		this.props.history.push('/animals')
+		const userNameVal = this.state.username;
+		const passwordVal = this.state.password;
+		this.props.getUser(userNameVal).then((user) => {
+			console.log(user[0], passwordVal);
+			if (passwordVal === user[0].password) {
+				sessionStorage.setItem('userId', user[0].id);
+				this.props.history.push('/animals');
+			} else {
+				window.alert('Ur wRoNg!');
+			}
+		});
 	};
 
 	render() {
@@ -37,12 +35,12 @@ export default class Login extends Component {
 			<div>
 				<form onSubmit={this.handleLogin}>
 					<h1 className="h3 mb-3 font-weight-normal">Please sign in</h1>
-					<label htmlFor="inputEmail">Email address</label>
+					<label htmlFor="inputusername">Username</label>
 					<input
 						onChange={this.handleFieldChange}
-						type="email"
-						id="email"
-						placeholder="Email address"
+						type="text"
+						id="username"
+						placeholder="username"
 						required=""
 						autoFocus=""
 					/>

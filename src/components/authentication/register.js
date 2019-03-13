@@ -7,9 +7,9 @@ export default class Register extends Component {
 		username: '',
 		name: ''
 	};
-	handleFieldChange = (evt) => {
+	handleFieldChange = (e) => {
 		const stateToChange = {};
-		stateToChange[evt.target.id] = evt.target.value;
+		stateToChange[e.target.id] = e.target.value;
 		this.setState(stateToChange);
 	};
 	handleRegister = (e) => {

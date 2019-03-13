@@ -23,6 +23,9 @@ const api = {
 			},
 			body: JSON.stringify(newAnimal)
 		}).then((data) => data.json());
+	},
+	singleByAttribute(branch, attribute, variable) {
+		return fetch(`${remoteURL}/${branch}?${attribute}=${variable}`).then((r) => r.json());
 	}
 };
 
