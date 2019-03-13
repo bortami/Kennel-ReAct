@@ -19,8 +19,14 @@ export default class Login extends Component {
 		this.props.getUser(userNameVal).then((user) => {
 			console.log(user[0], passwordVal);
 			if (passwordVal === user[0].password) {
-				sessionStorage.setItem('userId', user[0].id);
-				this.props.history.push('/animals');
+				if(document.getElementById("rememberme").checked){
+					localStorage.setItem('userId', user[0].id);
+				this.props.history.push('/');
+				} else{
+					sessionStorage.setItem("userId", user[0].id);
+					this.props.history.push("/")
+				}
+				
 			} else {
 				window.alert('Ur wRoNg!');
 			}
@@ -49,6 +55,7 @@ export default class Login extends Component {
 						placeholder="Password"
 						required=""
 					/>
+					<input type="checkbox" id="rememberme" value="Remember Me" name="rememeberMe"/ >Remember Me
 					<button type="submit" className="btn btn-success">
 						Sign In
 					</button>
