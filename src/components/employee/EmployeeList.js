@@ -33,6 +33,15 @@ export default class EmployeeList extends Component {
 										Details
 									</Link>
 									<button
+										type="button"
+										className="btn btn-success"
+										onClick={() => {
+											this.props.history.push(`/employees/${singleEmployee.id}/edit`);
+										}}
+									>
+										Edit
+									</button>
+									<button
 										className="card-link"
 										onClick={() => this.props.fireEmployee(singleEmployee.id)}
 									>

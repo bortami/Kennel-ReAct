@@ -9,7 +9,7 @@ export default class LocationDetail extends Component {
 				<div key={owner.id} className="card">
 					<div className="card-body">
 						<h4 className="card-title">{owner.name}</h4>
-						<p>Phone Number :{owner.phoneNumber}</p>
+						<p>Phone Number: {owner.phoneNumber}</p>
 						<a
 							href="#"
 							onClick={() =>

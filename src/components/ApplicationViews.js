@@ -14,7 +14,9 @@ import EmployeeForm from './employee/EmployeeForm';
 import OwnerForm from './owners/OwnerForm';
 import Login from './authentication/Login';
 import Register from './authentication/register';
-import AnimalEditForm from "./animals/AnimalEditForm"
+import AnimalEditForm from './animals/AnimalEditForm';
+import EmployeeEditForm from './employee/EmployeeEditForm';
+import OwnerEditForm from './owners/OwnerEditForm';
 class ApplicationViews extends Component {
 	state = {
 		employees: [],
@@ -23,8 +25,7 @@ class ApplicationViews extends Component {
 		owners: [],
 		animalOwners: []
 	};
-	isAuthenticated = () =>
-		sessionStorage.getItem('userId') !== null || localStorage.getItem('userId') !== null;
+	isAuthenticated = () => sessionStorage.getItem('userId') !== null || localStorage.getItem('userId') !== null;
 
 	getSingleUserbyUsername = (variable) => api.singleByAttribute('employees', 'username', variable);
 
@@ -69,14 +70,27 @@ class ApplicationViews extends Component {
 		});
 
 	updateAnimal = (editedAnimalObject) => {
-        return api.put("animals", editedAnimalObject)
-        .then(() => api.all("animals"))
-        .then(animals => {
-          this.setState({
-            animals: animals
-          })
-        });
-      };	
+		return api.put('animals', editedAnimalObject).then(() => api.all('animals')).then((animals) => {
+			this.setState({
+				animals: animals
+			});
+		});
+	};
+	updateOwner = (editedOwnerObject) => {
+		return api.put('owners', editedOwnerObject).then(() => api.all('owners')).then((owners) => {
+			this.setState({
+				owners: owners
+			});
+		});
+	};
+	updateEmployee = (editedEmployeeObject) => {
+		return api.put('employees', editedEmployeeObject).then(() => api.all('employees')).then((employees) => {
+			this.setState({
+				employees: employees
+			});
+		});
+	};
+
 	componentDidMount() {
 		const newState = {};
 		api.all('employees').then((parsedEmployees) => {
@@ -153,15 +167,6 @@ class ApplicationViews extends Component {
 					}}
 				/>
 				<Route
-					exact
-					path="/animals/:animalId(\d+)"
-					render={(props) => {
-						return (
-							<AnimalDetail {...props} deleteAnimal={this.deleteAnimal} animals={this.state.animals} />
-						);
-					}}
-				/>
-				<Route
 					path="/animals/:animalId(\d+)/edit"
 					render={(props) => {
 						return (
@@ -209,6 +214,18 @@ class ApplicationViews extends Component {
 					}}
 				/>
 				<Route
+					path="/employees/:employeeId(\d+)/edit"
+					render={(props) => {
+						return (
+							<EmployeeEditForm
+								{...props}
+								employees={this.state.employees}
+								updateEmployee={this.updateEmployee}
+							/>
+						);
+					}}
+				/>
+				<Route
 					exact
 					path="/owners"
 					render={(props) => {
@@ -229,6 +246,12 @@ class ApplicationViews extends Component {
 					path="/owners/new"
 					render={(props) => {
 						return <OwnerForm {...props} addOwner={this.addOwner} />;
+					}}
+				/>
+				<Route
+					path="/owners/:ownerId(\d+)/edit"
+					render={(props) => {
+						return <OwnerEditForm {...props} owners={this.state.owners} updateOwner={this.updateOwner} />;
 					}}
 				/>
 				<Route
