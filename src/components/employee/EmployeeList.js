@@ -1,58 +1,46 @@
 import React, { Component } from 'react';
+import person from '../animals/notsureif.png';
 import '../animals/Animal.css';
-import fry from '../animals/notsureif.png';
-import { Link } from 'react-router-dom';
+import AnimalCard from '../animals/AnimalCard';
 
 export default class EmployeeList extends Component {
 	render() {
 		return (
-			<React.Fragment>
-				<div className="employeeButton">
-					<button
-						type="button"
-						className="btn btn-success"
-						onClick={() => {
-							this.props.history.push('/employees/new');
-						}}
-					>
-						Hire Employee
-					</button>
-				</div>
-				<section className="employees">
-					{this.props.employees.map((singleEmployee) => (
-						<div key={singleEmployee.id} className="card">
-							<div className="card-body">
-								<h5 className="card-title">
-									<img
-										src={fry}
-										className="icon--fry"
-										alt="fry is not sure if reAct is easy or he's a genius"
-									/>
-									{singleEmployee.name}
-									<Link className="nav-link" to={`/employees/${singleEmployee.id}`}>
-										Details
-									</Link>
-									<button
-										type="button"
-										className="btn btn-success"
-										onClick={() => {
-											this.props.history.push(`/employees/${singleEmployee.id}/edit`);
-										}}
-									>
-										Edit
-									</button>
-									<button
-										className="card-link"
-										onClick={() => this.props.fireEmployee(singleEmployee.id)}
-									>
-										Fire
-									</button>
-								</h5>
+			<section className="employees">
+				{this.props.employees.map((employee) => (
+					<div key={employee.id} className="card card--employee">
+						<div className="card-body">
+							<h5 className="card-title">
+								<img
+									src={person}
+									className="icon--employee"
+									alt="not sure if react is easy or i'm a genius"
+								/>
+								{employee.name}
+								<button
+									type="button"
+									className="btn btn-success"
+									onClick={() => {
+										this.props.history.push(`/employees/${employee.id}/edit`);
+									}}
+								>
+									Edit
+								</button>
+								<button onClick={() => this.props.deleteEmployee(employee.id)} className="btn btn-danger">
+									Delete
+								</button>
+							</h5>
+
+							<h6 class="card-subtitle mb-2 text-muted">Caretaker For</h6>
+							<div className="animals--caretaker">
+								{this.props.animals
+									.filter((anml) => anml.employeeId === employee.id)
+									.map((anml) => <AnimalCard key={anml.id} animal={anml} {...this.props} />)}
 							</div>
 						</div>
-					))}
-				</section>
-			</React.Fragment>
+					</div>
+				))}
+			</section>
 		);
 	}
 }

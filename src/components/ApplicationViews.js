@@ -43,7 +43,7 @@ class ApplicationViews extends Component {
 			})
 		);
 	};
-	fireEmployee = (id) => {
+	deleteEmployee = (id) => {
 		api.deleteAndList('employees', id).then((employees) => this.setState({ employees: employees }));
 	};
 
@@ -153,17 +153,18 @@ class ApplicationViews extends Component {
 					}}
 				/>
 				<Route
+					path="/animals/new"
+					render={(props) => {
+						return <AnimalForm {...props} addAnimal={this.addAnimal} employees={this.state.employees} />;
+					}}
+				/>
+				<Route
+					exact
 					path="/animals/:animalId(\d+)"
 					render={(props) => {
 						return (
 							<AnimalDetail {...props} deleteAnimal={this.deleteAnimal} animals={this.state.animals} />
 						);
-					}}
-				/>
-				<Route
-					path="/animals/new"
-					render={(props) => {
-						return <AnimalForm {...props} addAnimal={this.addAnimal} employees={this.state.employees} />;
 					}}
 				/>
 				<Route
@@ -186,7 +187,8 @@ class ApplicationViews extends Component {
 							return (
 								<EmployeeList
 									{...props}
-									fireEmployee={this.fireEmployee}
+									deleteEmployee={this.deleteEmployee}
+									animals={this.state.animals}
 									employees={this.state.employees}
 								/>
 							);

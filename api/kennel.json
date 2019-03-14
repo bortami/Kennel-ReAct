@@ -16,7 +16,7 @@
     },
     {
       "id": 3,
-      "name": "Zoe Marcum"
+      "name": "Zoe Bangledesh"
     },
     {
       "id": 4,
@@ -45,20 +45,6 @@
       "username": "Brian",
       "name": "Brian Tabor",
       "id": 7
-    },
-    {
-      "email": "amy@amy.com",
-      "password": "a",
-      "username": "Amy",
-      "name": "Amy Gallagher",
-      "id": 8
-    },
-    {
-      "email": "evie@evie.com",
-      "password": "e",
-      "username": "Evelyn",
-      "name": "Evelyn Grace",
-      "id": 9
     }
   ],
   "animals": [
@@ -117,10 +103,10 @@
       "employeeId": 6
     },
     {
-      "name": "Buck",
-      "breed": "Horse",
-      "employeeId": 3,
-      "id": 11
+      "id": 11,
+      "name": "Buckie",
+      "breed": "Cow",
+      "employeeId": 5
     }
   ],
   "owners": [
