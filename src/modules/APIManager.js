@@ -26,7 +26,16 @@ const api = {
 	},
 	singleByAttribute(branch, attribute, variable) {
 		return fetch(`${remoteURL}/${branch}?${attribute}=${variable}`).then((r) => r.json());
-	}
+	},
+	put(branch, editedObject) {
+    return fetch(`${remoteURL}/${branch}/${editedObject.id}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(editedObject)
+    }).then(data => data.json());
+  }
 };
 
 export default api;

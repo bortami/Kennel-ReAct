@@ -28,6 +28,15 @@ export default class AnimalList extends Component {
 									<Link className="nav-link" to={`/animals/${animal.id}`}>
 										Details
 									</Link>
+									<button
+										type="button"
+										className="btn btn-success"
+										onClick={() => {
+											this.props.history.push(`/animals/${this.props.animal.id}/edit`);
+										}}
+									>
+										Edit
+									</button>
 									<a
 										href="#"
 										onClick={() => this.props.deleteAnimal(animal.id)}

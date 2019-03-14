@@ -14,6 +14,7 @@ import EmployeeForm from './employee/EmployeeForm';
 import OwnerForm from './owners/OwnerForm';
 import Login from './authentication/Login';
 import Register from './authentication/register';
+import AnimalEditForm from "./animals/AnimalEditForm"
 class ApplicationViews extends Component {
 	state = {
 		employees: [],
@@ -23,7 +24,7 @@ class ApplicationViews extends Component {
 		animalOwners: []
 	};
 	isAuthenticated = () =>
-		sessionStorage.getItem('credentials') !== null || localStorage.getItem('credentials') !== null;
+		sessionStorage.getItem('userId') !== null || localStorage.getItem('userId') !== null;
 
 	getSingleUserbyUsername = (variable) => api.singleByAttribute('employees', 'username', variable);
 
@@ -66,6 +67,16 @@ class ApplicationViews extends Component {
 		api.all('employees').then((parsedEmps) => {
 			this.setState({ employees: parsedEmps });
 		});
+
+	updateAnimal = (editedAnimalObject) => {
+        return api.put("animals", editedAnimalObject)
+        .then(() => api.all("animals"))
+        .then(animals => {
+          this.setState({
+            animals: animals
+          })
+        });
+      };	
 	componentDidMount() {
 		const newState = {};
 		api.all('employees').then((parsedEmployees) => {
@@ -139,6 +150,27 @@ class ApplicationViews extends Component {
 					path="/animals/new"
 					render={(props) => {
 						return <AnimalForm {...props} addAnimal={this.addAnimal} employees={this.state.employees} />;
+					}}
+				/>
+				<Route
+					exact
+					path="/animals/:animalId(\d+)"
+					render={(props) => {
+						return (
+							<AnimalDetail {...props} deleteAnimal={this.deleteAnimal} animals={this.state.animals} />
+						);
+					}}
+				/>
+				<Route
+					path="/animals/:animalId(\d+)/edit"
+					render={(props) => {
+						return (
+							<AnimalEditForm
+								{...props}
+								employees={this.state.employees}
+								updateAnimal={this.updateAnimal}
+							/>
+						);
 					}}
 				/>
 				<Route
