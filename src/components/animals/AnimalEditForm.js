@@ -1,5 +1,4 @@
 import React, { Component } from "react"
-import AnimalManager from "../../modules/AnimalManager"
 import api from "../../modules/APIManager";
 
 export default class AnimalEditForm extends Component {
@@ -36,7 +35,7 @@ export default class AnimalEditForm extends Component {
   }
 
     componentDidMount() {
-      api.get("animals", this.props.match.params.animalId)
+      api.all("animals", this.props.match.params.animalId)
       .then(animal => {
         this.setState({
           animalName: animal.name,

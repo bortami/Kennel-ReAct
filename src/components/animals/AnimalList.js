@@ -24,7 +24,8 @@ export default class AnimalList extends Component {
 							<div className="card-body">
 								<h5 className="card-title">
 									<img src={dog} className="icon--dog" alt="cute dog icon" />
-									{animal.name}
+									{animal.name}<br/>
+									<em>{animal.breed}</em>
 									<Link className="nav-link" to={`/animals/${animal.id}`}>
 										Details
 									</Link>
@@ -32,7 +33,7 @@ export default class AnimalList extends Component {
 										type="button"
 										className="btn btn-success"
 										onClick={() => {
-											this.props.history.push(`/animals/${this.props.animal.id}/edit`);
+											this.props.history.push(`/animals/${animal.id}/edit`);
 										}}
 									>
 										Edit
