@@ -2,49 +2,59 @@
   "employees": [
     {
       "id": 1,
-      "name": "Jessica Younker",
+      "name": "Jessie Yoonker",
       "username": "Jessica",
       "email": "jess@jess.com",
-      "password": "j"
+      "password": "j",
+      "locationId": 1
     },
     {
       "id": 2,
       "name": "Jordan Nelson",
       "username": "Jordan",
       "email": "jordan@jordan.com",
-      "password": "password"
+      "password": "password",
+      "locationId": 1
     },
     {
       "id": 3,
-      "name": "Zoe Bangledesh"
+      "name": "Zoe Bangledesh",
+      "locationId": 1,
+      "username": "Zoe",
+      "email": "zoe@zoe.com",
+      "password": "z"
     },
     {
       "id": 4,
       "name": "Blaise Roberts",
       "username": "Blaise",
       "email": "blaise@blaise.com",
-      "password": "b"
+      "password": "b",
+      "locationId": 1
     },
     {
       "name": "Jacob Jacobson",
       "id": 5,
       "username": "Jacob",
       "email": "jacob@jacob.com",
-      "password": "p"
+      "password": "j",
+      "locationId": 2
     },
     {
       "email": "michelle@michelle.com",
       "password": "m",
       "username": "Michelle",
       "name": "Michelle Tabor",
-      "id": 6
+      "id": 6,
+      "locationId": 2
     },
     {
       "email": "brian@brian.com",
       "password": "b",
       "username": "Brian",
       "name": "Brian Tabor",
-      "id": 7
+      "id": 7,
+      "locationId": 2
     }
   ],
   "animals": [

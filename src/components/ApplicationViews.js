@@ -120,7 +120,12 @@ class ApplicationViews extends Component {
 					render={(props) => {
 						if (this.isAuthenticated()) {
 							return (
-								<LocationList locations={this.state.locations} deleteLocation={this.deleteLocation} />
+								<LocationList
+									locations={this.state.locations}
+									deleteLocation={this.deleteLocation}
+									employees={this.state.employees}
+									animals={this.state.animals}
+								/>
 							);
 						} else {
 							return <Redirect to="/login" />;

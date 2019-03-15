@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import '../animals/Animal.css';
 import { Link } from 'react-router-dom';
+import EmployeeCard from '../employee/EmployeeCard';
 
 export default class LocationList extends Component {
 	render() {
@@ -21,6 +22,12 @@ export default class LocationList extends Component {
 									Delete
 								</button>
 							</h5>
+							<h6>Employees</h6>
+						</div>
+						<div className="employees">
+							{this.props.employees
+								.filter((emp) => emp.locationId === singlelocation.id)
+								.map((emp) => <EmployeeCard key={emp.id} employee={emp} {...this.props} />)}
 						</div>
 					</div>
 				))}

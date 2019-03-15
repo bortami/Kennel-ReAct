@@ -29,7 +29,7 @@ const api = {
 	},
 	put(branch, editedObject) {
     return fetch(`${remoteURL}/${branch}/${editedObject.id}`, {
-      method: "PUT",
+      method: "PATCH",
       headers: {
         "Content-Type": "application/json"
       },
