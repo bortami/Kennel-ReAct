@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import dog from './DogIcon.png';
 import './Animal.css';
 
-export default class AnimalCard extends Component {
+export default class ResourceCard extends Component {
 	render() {
 		return (
 			<div key={this.props.animal.id} className="card">

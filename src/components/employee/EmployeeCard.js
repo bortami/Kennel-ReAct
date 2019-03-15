@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
-import fry from '../animals/notsureif.png';
 import '../animals/Animal.css';
 import AnimalCard from '../animals/AnimalCard';
 
@@ -10,7 +8,7 @@ export default class EmployeeCard extends Component {
 			<div key={this.props.employee.id} className="card">
 				<div className="card-body">
 					<h5 className="card-title">
-						<img src={fry} className="icon--employee" alt="not sure if react is easy or i'm a genius" />
+						<img src={this.props.employee.image} className="icon employee" alt="not sure if react is easy or i'm a genius" />
 						{this.props.employee.name}
 						<button
 							type="button"
