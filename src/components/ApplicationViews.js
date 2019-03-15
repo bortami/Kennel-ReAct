@@ -1,13 +1,8 @@
 import { Route, Redirect } from 'react-router-dom';
 import React, { Component } from 'react';
 import api from '../modules/APIManager';
-import AnimalDetail from './animals/AnimalDetail';
-
-import OwnerDetail from './owners/OwnerDetail';
-import EmployeeDetail from './employee/EmployeeDetail';
 import AnimalForm from './animals/AnimalForm';
 import EmployeeForm from './employee/EmployeeForm';
-import OwnerForm from './owners/OwnerForm';
 import Login from './authentication/Login';
 import Register from './authentication/register';
 import AnimalEditForm from './animals/AnimalEditForm';
@@ -15,6 +10,8 @@ import EmployeeEditForm from './employee/EmployeeEditForm';
 import OwnerEditForm from './owners/OwnerEditForm';
 import ResourceList from './generics/ResourceList';
 import ResourceDetail from './generics/ResourceDetail';
+import ResourceForm from './generics/ResourceForm';
+
 class ApplicationViews extends Component {
 	state = {
 		employees: [],
@@ -46,11 +43,7 @@ class ApplicationViews extends Component {
 	};
 
 	deleteLocation = (id) => {
-		api
-			.deleteAndList('locations', id)
-			.then((locations) =>
-				this.setState({ locations: locations })
-			);
+		api.deleteAndList('locations', id).then((locations) => this.setState({ locations: locations }));
 	};
 
 	addAnimal = (animal) =>
@@ -61,7 +54,11 @@ class ApplicationViews extends Component {
 
 	addOwner = (owner) =>
 		api.post(owner, 'owners').then(() => api.all('owners')).then((owners) => this.setState({ owners: owners }));
-
+	addLocation = (location) =>
+		api
+			.post(location, 'locations')
+			.then(() => api.all('locations'))
+			.then((locations) => this.setState({ locations: locations }));
 	addEmployee = (employee) =>
 		api
 			.post(employee, 'employees')
@@ -139,15 +136,15 @@ class ApplicationViews extends Component {
 					}}
 				/>
 				<Route
-					path="/:locationId(\d+)"
+					path="/locations/new"
 					render={(props) => {
-						return (
-							<ResourceDetail
-								{...props}
-								deleteResource={this.deleteLocation}
-								resource={this.state.locations}
-							/>
-						);
+						return <ResourceForm {...props} route="locations" addResource={this.addLocation} />;
+					}}
+				/>
+				<Route
+					path="/locations/:locationId(\d+)"
+					render={(props) => {
+						return <ResourceDetail {...props} deletePrimary={this.deleteLocation} route="locations" />;
 					}}
 				/>
 				<Route
@@ -178,9 +175,7 @@ class ApplicationViews extends Component {
 					exact
 					path="/animals/:animalId(\d+)"
 					render={(props) => {
-						return (
-							<AnimalDetail {...props} deleteAnimal={this.deleteAnimal} animals={this.state.animals} />
-						);
+						return <ResourceDetail {...props} deleteResource={this.deleteAnimal} route="animals" />;
 					}}
 				/>
 				<Route
@@ -219,13 +214,7 @@ class ApplicationViews extends Component {
 				<Route
 					path="/employees/:employeeId(\d+)"
 					render={(props) => {
-						return (
-							<EmployeeDetail
-								{...props}
-								fireEmployee={this.fireEmployee}
-								employees={this.state.employees}
-							/>
-						);
+						return <ResourceDetail {...props} deleteResource={this.fireEmployee} route="employees" />;
 					}}
 				/>
 				<Route
@@ -267,13 +256,13 @@ class ApplicationViews extends Component {
 				<Route
 					path="/owners/:ownerId(\d+)"
 					render={(props) => {
-						return <OwnerDetail {...props} deleteOwner={this.deleteOwner} owners={this.state.owners} />;
+						return <ResourceDetail {...props} deleteResource={this.deleteOwner} route="owners" />;
 					}}
 				/>
 				<Route
 					path="/owners/new"
 					render={(props) => {
-						return <OwnerForm {...props} addOwner={this.addOwner} />;
+						return <ResourceForm {...props} route="owners" addResource={this.addOwner} />;
 					}}
 				/>
 				<Route

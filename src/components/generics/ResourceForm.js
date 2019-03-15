@@ -4,49 +4,50 @@ import '../animals/Animal.css';
 export default class OwnerForm extends Component {
 	state = {
 		name: '',
-		phoneNumber: ''
+		detail: ''
 	};
 	handleFieldChange = (e) => {
 		const stateToChange = {};
 		stateToChange[e.target.id] = e.target.value;
 		this.setState(stateToChange);
 	};
-	constructNewOwner = (e) => {
+	constructResource = (e) => {
 		e.preventDefault();
-		const owner = {
+		const item = {
 			name: this.state.name,
-			phoneNumber: this.state.phoneNumber
+			detail: this.state.detail
 		};
-		this.props.addOwner(owner).then(() => this.props.history.push('/owners'));
+		this.props.addResource(item).then(() => this.props.history.push(`/${this.props.route}`));
 	};
 
 	render() {
 		return (
 			<React.Fragment>
-				<form className="ownerForm">
+				<form className="form">
+                <h4>ADD {this.props.route.toUpperCase().split("S")[0]}</h4>
 					<div className="form-group">
-						<label htmlFor="name">Owner Name</label>
+						<label htmlFor="name">Name </label>
 						<input
 							type="text"
 							required
 							className="form-control"
 							onChange={this.handleFieldChange}
 							id="name"
-							placeholder="Owner name"
+							placeholder="name"
 						/>
 					</div>
 					<div className="form-group">
-						<label htmlFor="phoneNumber">Phone Number</label>
+						<label htmlFor="detail">{(this.props.route === "owners")? "Phone Number" : (this.props.route === "locations")? "Address" : "Details"}</label>
 						<input
-							type="phone"
+							type="text"
 							required
 							className="form-control"
 							onChange={this.handleFieldChange}
-							id="phoneNumber"
-							placeholder="Phone Number"
+							id="detail"
+							placeholder="detail"
 						/>
 					</div>
-					<button type="submit" onClick={this.constructNewOwner} className="btn btn-primary">Submit</button>
+					<button type="submit" onClick={this.constructResource} className="btn btn-primary">Submit</button>
 				</form>
 			</React.Fragment>
 		);
