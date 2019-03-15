@@ -2,7 +2,7 @@ import { Route, Redirect } from 'react-router-dom';
 import React, { Component } from 'react';
 import api from '../modules/APIManager';
 import AnimalDetail from './animals/AnimalDetail';
-import LocationDetail from './locations/LocationDetail';
+
 import OwnerDetail from './owners/OwnerDetail';
 import EmployeeDetail from './employee/EmployeeDetail';
 import AnimalForm from './animals/AnimalForm';
@@ -14,6 +14,7 @@ import AnimalEditForm from './animals/AnimalEditForm';
 import EmployeeEditForm from './employee/EmployeeEditForm';
 import OwnerEditForm from './owners/OwnerEditForm';
 import ResourceList from './generics/ResourceList';
+import ResourceDetail from './generics/ResourceDetail';
 class ApplicationViews extends Component {
 	state = {
 		employees: [],
@@ -45,8 +46,13 @@ class ApplicationViews extends Component {
 	};
 
 	deleteLocation = (id) => {
-		api.deleteAndList('locations', id).then((locations) => this.setState({ locations: locations }));
+		api
+			.deleteAndList('locations', id)
+			.then((locations) =>
+				this.setState({ locations: locations })
+			);
 	};
+
 	addAnimal = (animal) =>
 		api
 			.post(animal, 'animals')
@@ -136,10 +142,10 @@ class ApplicationViews extends Component {
 					path="/:locationId(\d+)"
 					render={(props) => {
 						return (
-							<LocationDetail
+							<ResourceDetail
 								{...props}
-								deleteLocation={this.deleteLocation}
-								locations={this.state.locations}
+								deleteResource={this.deleteLocation}
+								resource={this.state.locations}
 							/>
 						);
 					}}
@@ -245,12 +251,14 @@ class ApplicationViews extends Component {
 					path="/owners"
 					render={(props) => {
 						if (this.isAuthenticated()) {
-							return <ResourceList
+							return (
+								<ResourceList
 									{...props}
 									listResources={this.state.owners}
 									deletePrimary={this.deleteOwner}
 									route="owners"
 								/>
+							);
 						} else {
 							return <Redirect to="/login" />;
 						}
