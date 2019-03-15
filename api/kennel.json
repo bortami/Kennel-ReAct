@@ -6,7 +6,7 @@
       "username": "Jessica",
       "email": "jess@jess.com",
       "password": "j",
-      "locationId": 1,
+      "extraId": 1,
       "image": "https://avatars0.githubusercontent.com/u/669741?s=460&v=4"
     },
     {
@@ -15,13 +15,13 @@
       "username": "Jordan",
       "email": "jordan@jordan.com",
       "password": "password",
-      "locationId": 1,
+      "extraId": 1,
       "image": "https://avatars0.githubusercontent.com/u/669741?s=460&v=4"
     },
     {
       "id": 3,
       "name": "Zoe Bangledesh",
-      "locationId": 1,
+      "extraId": 1,
       "username": "Zoe",
       "email": "zoe@zoe.com",
       "password": "z",
@@ -33,7 +33,7 @@
       "username": "Blaise",
       "email": "blaise@blaise.com",
       "password": "b",
-      "locationId": 1,
+      "extraId": 1,
       "image": "https://avatars0.githubusercontent.com/u/669741?s=460&v=4"
     },
     {
@@ -42,7 +42,7 @@
       "username": "Jacob",
       "email": "jacob@jacob.com",
       "password": "j",
-      "locationId": 2,
+      "extraId": 2,
       "image": "https://avatars0.githubusercontent.com/u/669741?s=460&v=4"
     },
     {
@@ -51,16 +51,7 @@
       "username": "Michelle",
       "name": "Michelle Tabor",
       "id": 6,
-      "locationId": 2,
-      "image": "https://avatars0.githubusercontent.com/u/669741?s=460&v=4"
-    },
-    {
-      "email": "brian@brian.com",
-      "password": "b",
-      "username": "Brian",
-      "name": "Brian Tabor",
-      "id": 7,
-      "locationId": 2,
+      "extraId": 2,
       "image": "https://avatars0.githubusercontent.com/u/669741?s=460&v=4"
     }
   ],
@@ -68,71 +59,71 @@
     {
       "id": 2,
       "name": "Jack",
-      "breed": "Jack Russel",
-      "employeeId": 1,
+      "detail": "Jack Russel",
+      "extraId": 1,
       "image": "https://vignette.wikia.nocookie.net/en.futurama/images/d/dc/Nibbler4.jpg/revision/latest/zoom-crop/width/240/height/240?cb=20120718180136"
     },
     {
       "id": 3,
       "name": "Angus",
-      "breed": "Malamute",
-      "employeeId": 2,
+      "detail": "Malamute",
+      "extraId": 2,
       "image": "https://vignette.wikia.nocookie.net/en.futurama/images/d/dc/Nibbler4.jpg/revision/latest/zoom-crop/width/240/height/240?cb=20120718180136"
     },
     {
       "id": 4,
       "name": "Henley",
-      "breed": "Beagle",
-      "employeeId": 2,
+      "detail": "Beagle",
+      "extraId": 2,
       "image": "https://vignette.wikia.nocookie.net/en.futurama/images/d/dc/Nibbler4.jpg/revision/latest/zoom-crop/width/240/height/240?cb=20120718180136"
     },
     {
       "id": 5,
       "name": "Derkins",
-      "breed": "Yorkie",
-      "employeeId": 3,
+      "detail": "Yorkie",
+      "extraId": 3,
       "image": "https://vignette.wikia.nocookie.net/en.futurama/images/d/dc/Nibbler4.jpg/revision/latest/zoom-crop/width/240/height/240?cb=20120718180136"
     },
     {
       "id": 6,
       "name": "Checkers",
-      "breed": "Poodle",
-      "employeeId": 4,
+      "detail": "Poodle",
+      "extraId": 4,
       "image": "https://vignette.wikia.nocookie.net/en.futurama/images/d/dc/Nibbler4.jpg/revision/latest/zoom-crop/width/240/height/240?cb=20120718180136"
     },
     {
       "name": "Starbuck",
-      "breed": "Fiest",
-      "employeeId": 3,
+      "detail": "Fiest",
+      "extraId": 3,
       "id": 7,
       "image": "https://vignette.wikia.nocookie.net/en.futurama/images/d/dc/Nibbler4.jpg/revision/latest/zoom-crop/width/240/height/240?cb=20120718180136"
     },
     {
       "name": "Reginald",
-      "breed": "Parakeet",
-      "employeeId": 4,
+      "detail": "Parakeet",
+      "extraId": 4,
       "id": 8,
       "image": "https://vignette.wikia.nocookie.net/en.futurama/images/d/dc/Nibbler4.jpg/revision/latest/zoom-crop/width/240/height/240?cb=20120718180136"
     },
     {
       "name": "George",
-      "breed": "Pitbull",
-      "employeeId": 1,
+      "detail": "Pitbull",
+      "extraId": 1,
       "id": 9,
       "image": "https://vignette.wikia.nocookie.net/en.futurama/images/d/dc/Nibbler4.jpg/revision/latest/zoom-crop/width/240/height/240?cb=20120718180136"
     },
     {
       "id": 10,
       "name": "Sally",
-      "breed": "Pashcaw",
-      "employeeId": 6,
+      "detail": "Pashcaw",
+      "extraId": 6,
       "image": "https://vignette.wikia.nocookie.net/en.futurama/images/d/dc/Nibbler4.jpg/revision/latest/zoom-crop/width/240/height/240?cb=20120718180136"
     },
     {
       "id": 11,
       "name": "Buckie",
-      "breed": "Cow",
-      "employeeId": 5,
+      "detail": "Cow",
+      "extraId": 5,
       "image": "https://vignette.wikia.nocookie.net/en.futurama/images/d/dc/Nibbler4.jpg/revision/latest/zoom-crop/width/240/height/240?cb=20120718180136"
     }
   ],
@@ -140,43 +131,43 @@
     {
       "id": 1,
       "name": "Ryan",
-      "phoneNumber": "304-751-0000",
+      "detail": "304-751-0000",
       "image": "https://i.pinimg.com/originals/e0/70/16/e070165a0960b64562e88dc4e7bdfbbb.jpg"
     },
     {
       "id": 2,
       "name": "Dale",
-      "phoneNumber": "304-751-0000",
+      "detail": "304-751-0000",
       "image": "https://i.pinimg.com/originals/e0/70/16/e070165a0960b64562e88dc4e7bdfbbb.jpg"
     },
     {
       "id": 3,
       "name": "Russ",
-      "phoneNumber": "304-751-0000",
+      "detail": "304-751-0000",
       "image": "https://i.pinimg.com/originals/e0/70/16/e070165a0960b64562e88dc4e7bdfbbb.jpg"
     },
     {
       "id": 4,
       "name": "Sydney",
-      "phoneNumber": "304-751-0000",
+      "detail": "304-751-0000",
       "image": "https://i.pinimg.com/originals/e0/70/16/e070165a0960b64562e88dc4e7bdfbbb.jpg"
     },
     {
       "id": 5,
       "name": "Megan",
-      "phoneNumber": "304-751-0000",
+      "detail": "304-751-0000",
       "image": "https://i.pinimg.com/originals/e0/70/16/e070165a0960b64562e88dc4e7bdfbbb.jpg"
     },
     {
       "id": 6,
       "name": "Michelle",
-      "phoneNumber": "304-751-0000",
+      "detail": "304-751-0000",
       "image": "https://i.pinimg.com/originals/e0/70/16/e070165a0960b64562e88dc4e7bdfbbb.jpg"
     },
     {
       "id": 7,
       "name": "Josh",
-      "phoneNumber": "304-751-0000",
+      "detail": "304-751-0000",
       "image": "https://i.pinimg.com/originals/e0/70/16/e070165a0960b64562e88dc4e7bdfbbb.jpg"
     }
   ],
@@ -211,13 +202,13 @@
     {
       "id": 1,
       "name": "Nashville North",
-      "address": "500 Circle Way",
+      "detail": "500 Circle Way",
       "image": "https://vignette.wikia.nocookie.net/en.futurama/images/c/c1/Futurama_Planet_Express_spaceship.jpg/revision/latest/scale-to-width-down/250?cb=20061012224323"
     },
     {
       "id": 2,
       "name": "Nashville South",
-      "address": "10101 Binary Court",
+      "detail": "10101 Binary Court",
       "image": "https://vignette.wikia.nocookie.net/en.futurama/images/c/c1/Futurama_Planet_Express_spaceship.jpg/revision/latest/scale-to-width-down/250?cb=20061012224323"
     }
   ]

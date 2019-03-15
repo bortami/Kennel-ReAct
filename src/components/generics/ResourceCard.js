@@ -1,33 +1,47 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import './Animal.css';
+import '../animals/Animal.css';
 
 export default class ResourceCard extends Component {
+	hasImage =(param) =>{
+		if(param.image){
+			return <img src={this.props.resource.image} className="icon" alt="arg"/>
+		}
+	};
+	hasName = (param)=>{
+		if(param.name){
+			return param.name
+		}
+	}
+	hasDetails = (param)=>{
+		return <em>{param.detail}</em>
+	}
 	render() {
 		return (
-			<div key={this.props.animal.id} className="card">
+			
 				<div className="card-body">
-					<h5 className="card-title">
-						<img src={this.props.animal.image} className="icon" />
-						{this.props.animal.name}
-						<Link className="nav-link" to={`/animals/${this.props.animal.id}`}>
+					<h5>
+						{this.hasImage(this.props.resource)}
+						{this.hasName(this.props.resource)}</h5><br />
+						{this.hasDetails(this.props.resource)}<br />
+						<Link className="card-link" to={`/${this.props.route}/${this.props.resource.id}`}>
 							Details
-						</Link>
+						</Link><br />
 						<button
 							type="button"
 							className="btn btn-success"
 							onClick={() => {
-								this.props.history.push(`/animals/${this.props.animal.id}/edit`);
+								this.props.history.push(`/${this.props.route}/${this.props.resource.id}/edit`);
 							}}
 						>
 							Edit
-						</button>
-						<a href="#" onClick={() => this.props.deleteAnimal(this.props.animal.id)} className="card-link">
-							Discharge
+						</button><br />
+						<a href="#" onClick={() => this.props.deleteResource(this.props.resource.id)} className="card-link">
+							Delete
 						</a>
-					</h5>
+					
 				</div>
-			</div>
+
 		);
 	}
 }

@@ -1,9 +1,5 @@
 import { Route, Redirect } from 'react-router-dom';
 import React, { Component } from 'react';
-import AnimalList from './animals/AnimalList';
-import LocationList from './locations/LocationsList';
-import EmployeeList from './employee/EmployeeList';
-import OwnersList from './owners/OwnersList';
 import api from '../modules/APIManager';
 import AnimalDetail from './animals/AnimalDetail';
 import LocationDetail from './locations/LocationDetail';
@@ -17,6 +13,7 @@ import Register from './authentication/register';
 import AnimalEditForm from './animals/AnimalEditForm';
 import EmployeeEditForm from './employee/EmployeeEditForm';
 import OwnerEditForm from './owners/OwnerEditForm';
+import ResourceList from './generics/ResourceList';
 class ApplicationViews extends Component {
 	state = {
 		employees: [],
@@ -120,11 +117,14 @@ class ApplicationViews extends Component {
 					render={(props) => {
 						if (this.isAuthenticated()) {
 							return (
-								<LocationList
-									locations={this.state.locations}
-									deleteLocation={this.deleteLocation}
-									employees={this.state.employees}
-									animals={this.state.animals}
+								<ResourceList
+									{...props}
+									listResources={this.state.locations}
+									deletePrimary={this.deleteLocation}
+									deleteSecondary={this.deleteEmployee}
+									secondaryResource={this.state.employees}
+									route="locations"
+									secondRoute="employees"
 								/>
 							);
 						} else {
@@ -150,7 +150,12 @@ class ApplicationViews extends Component {
 					render={(props) => {
 						if (this.isAuthenticated()) {
 							return (
-								<AnimalList {...props} deleteAnimal={this.deleteAnimal} animals={this.state.animals} />
+								<ResourceList
+									{...props}
+									listResources={this.state.animals}
+									deletePrimary={this.deleteAnimal}
+									route="animals"
+								/>
 							);
 						} else {
 							return <Redirect to="/login" />;
@@ -190,11 +195,14 @@ class ApplicationViews extends Component {
 					render={(props) => {
 						if (this.isAuthenticated()) {
 							return (
-								<EmployeeList
+								<ResourceList
 									{...props}
-									deleteEmployee={this.deleteEmployee}
-									animals={this.state.animals}
-									employees={this.state.employees}
+									listResources={this.state.employees}
+									deletePrimary={this.deleteEmployee}
+									deleteSecondary={this.deleteAnimal}
+									secondaryResource={this.state.animals}
+									route="employees"
+									secondRoute="animals"
 								/>
 							);
 						} else {
@@ -237,7 +245,12 @@ class ApplicationViews extends Component {
 					path="/owners"
 					render={(props) => {
 						if (this.isAuthenticated()) {
-							return <OwnersList {...props} owners={this.state.owners} deleteOwner={this.deleteOwner} />;
+							return <ResourceList
+									{...props}
+									listResources={this.state.owners}
+									deletePrimary={this.deleteOwner}
+									route="owners"
+								/>
 						} else {
 							return <Redirect to="/login" />;
 						}
